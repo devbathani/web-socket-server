@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <script>
+      const socket = new WebSocket("ws://localhost:8080");
+
+      // Event handler for when the connection is opened
+      socket.onopen = (event) => {
+        console.log("WebSocket connection opened.");
+        // Send a test message to the server
+        socket.send("Hello from the client!");
+      };
+
+      // Event handler for incoming messages from the server
+      socket.onmessage = (event) => {
+        console.log("Received from server:", event.data);
+      };
+
+      // Event handler for connection close
+      socket.onclose = (event) => {
+        console.log("WebSocket connection closed.");
+      };
+    </script>
+  </body>
+</html>
